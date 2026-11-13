@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <title>BUMBLE-CECCZY3G</title>
   <style>
-    .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{width:230vmax;height:230vmax;flex-shrink:0}.click-splat path,.click-splat circle{fill:currentColor}
+    .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{position:absolute;left:50%;top:50%;width:230vmax;height:230vmax;transform:translate(-50%,-50%)}.click-splat path,.click-splat circle{fill:currentColor}
 
     header,.eyebrow,.intro,.tiny,.note,footer,.hint{display:none!important}main{height:100svh!important;max-height:none!important}
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -107,8 +107,8 @@
     document.body.appendChild(splat);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const rotation = Math.random() * 40 - 20;
-    const shiftX = Math.random() * 16 - 8;
-    const shiftY = Math.random() * 16 - 8;
+    const shiftX = Math.random() * 8 - 4;
+    const shiftY = Math.random() * 8 - 4;
     const position = `translate(${shiftX}vw, ${shiftY}vh)`;
     const effect = splat.animate([
       { opacity: 1, transform: `${position} scale(${reducedMotion ? 1 : .05}) rotate(${rotation}deg)` },
