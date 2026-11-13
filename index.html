@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f2e9">
+  <meta name="description" content="A little space to make a big mark. Pick a color and paint outside the lines.">
+  <title>Hello</title>
+  <style>
+    .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{width:230vmax;height:230vmax;flex-shrink:0}.click-splat path,.click-splat circle{fill:currentColor}
+
+    header,.eyebrow,.intro,.tiny,.note,footer,.hint{display:none!important}main{height:100svh!important;max-height:none!important}
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+    :root{--paper:#f4f2e9;--ink:#202b36;--orange:#ff6740;--purple:#b3a0d4}
+    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid #7260b2;outline-offset:6px}
+    .page{min-height:100svh;position:relative;overflow:hidden;padding:0 5.4%}header{height:111px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #202b362b;position:relative;z-index:3}.brand{display:flex;align-items:center;gap:11px;color:inherit;text-decoration:none;font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;letter-spacing:-1px}.brand svg{width:30px;height:30px}.edition{font-size:11px;letter-spacing:1.8px;text-transform:uppercase}.about{font-size:13px;display:flex;align-items:center;gap:10px}.status{height:7px;width:7px;border-radius:50%;background:var(--orange)}
+    main{min-height:700px;height:calc(100svh - 198px);max-height:1000px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center}.content{position:relative;z-index:2;padding-bottom:30px;pointer-events:none}.eyebrow{font-size:11px;font-weight:600;letter-spacing:2.4px;text-transform:uppercase;display:flex;justify-content:center;gap:13px;align-items:center}.eyebrow:before{content:'';width:23px;height:1px;background:var(--ink)}h1{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(85px,10.8vw,166px);line-height:.91;letter-spacing:-.025em;margin:33px 0 28px}h1 span{display:block}.second{position:relative}.second:after{content:'';position:absolute;bottom:-12px;left:18%;width:65%;height:9px;border-radius:50%;background:var(--orange);transform:rotate(-3deg)}.intro{font-size:16px;line-height:1.7;margin:32px auto 26px;color:#59616a}.cta{font-family:'Caveat',cursive;font-size:24px;pointer-events:auto;cursor:pointer;border:0;border-radius:4px;background:var(--ink);color:white;padding:19px 24px;display:inline-flex;gap:32px;align-items:center;font-weight:600;transition:transform .2s,background .2s}.cta:hover{background:#3b4857;transform:translateY(-3px)}.cta span{font-size:22px;line-height:14px;font-weight:400}.tiny{font-size:10px;letter-spacing:.4px;color:#777d7d;margin-top:14px}
+    .art{position:absolute;pointer-events:none;overflow:visible}.paint-orange{width:355px;height:430px;left:-120px;top:10%;transform:rotate(-16deg)}.paint-purple{width:410px;height:400px;right:-160px;bottom:7%;transform:rotate(15deg)}.scribble{width:135px;height:130px;right:10%;top:13%;transform:rotate(5deg)}.note{position:absolute;font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:-.3px;transform:rotate(-10deg);left:10%;bottom:16%;display:flex;align-items:center;gap:12px}.note svg{width:65px;height:50px}.spark{position:absolute;left:25%;top:16%;width:38px;height:38px;transform:rotate(10deg)}
+    footer{height:87px;border-top:1px solid #202b362b;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;z-index:3;font-size:10px;color:#686e70}.footer-left{display:flex;gap:18px;align-items:center}.palette{display:flex;gap:7px}.swatch{width:17px;height:17px;border:2px solid var(--paper);outline:1px solid transparent;border-radius:50%;padding:0;cursor:pointer}.swatch.selected{outline-color:var(--ink)}.footer-center{letter-spacing:1.6px;text-transform:uppercase;font-size:9px}.clear{background:none;border:0;color:inherit;font-size:10px;cursor:pointer;padding:10px 0 10px 15px}.clear:hover{color:var(--ink)}canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}.painting canvas{pointer-events:auto;cursor:crosshair;touch-action:none}.painting .content{opacity:.85}.painting .cta{pointer-events:none}.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:#59616a}
+    @media(min-width:1600px){.page{padding:0 8%}}@media(max-width:700px){.page{padding:0 6%}header{height:85px}.edition{display:none}.about{font-size:11px}.brand{font-size:18px}main{min-height:650px;height:calc(100svh - 185px)}h1{font-size:clamp(76px,17vw,116px);margin-top:28px}.eyebrow{font-size:9px;letter-spacing:1.5px}.intro{font-size:14px}.paint-orange{width:220px;left:-135px;top:3%}.paint-purple{width:240px;right:-155px;bottom:4%}.scribble{width:80px;right:2%;top:7%}.spark{left:13%;top:10%;width:27px}.note{left:4%;bottom:9%;font-size:10px}.note svg{width:40px}.footer-center{display:none}footer{height:100px}.footer-left{gap:10px;font-size:9px}.content{padding-bottom:35px}}
+    @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <a class="brand" href="./" aria-label="Make a Mark home"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 25 10 7l5 14L23 5l3 20" stroke="currentColor" stroke-width="4" stroke-linecap="square"/></svg>make a mark<span style="color:var(--orange)">®</span></a>
+    <span class="edition">A little creative freedom</span>
+    <span class="about"><i class="status"></i> Made for the fun of it</span>
+  </header>
+  <main id="studio">
+    <svg class="art" style="width:clamp(140px,23vw,330px);left:1%;top:12%;transform:rotate(-12deg)" viewBox="0 0 300 300" aria-hidden="true">
+      <g fill="#ff6740">
+        <path d="M140 75C155 68 158 29 170 33S171 78 183 88 230 57 237 70 198 106 202 119 274 112 273 129 212 144 208 157 254 198 242 210 203 175 187 183 194 258 177 260 166 197 151 200 125 258 111 250 137 195 125 181 68 217 59 203 106 164 100 151 29 149 31 131 107 131 112 114 70 65 85 54 127 96Z"/>
+        <circle cx="239" cy="39" r="10"/><circle cx="271" cy="190" r="7"/><circle cx="75" cy="254" r="9"/><circle cx="24" cy="91" r="6"/><ellipse cx="130" cy="22" rx="5" ry="11" transform="rotate(-20 130 22)"/>
+      </g>
+    </svg>
+    <svg class="art" style="width:clamp(150px,26vw,370px);right:0;bottom:13%;transform:rotate(19deg)" viewBox="0 0 300 300" aria-hidden="true">
+      <g fill="#b3a0d4">
+        <path d="M139 98C151 91 127 32 143 28S162 87 177 91 226 41 239 55 194 108 201 121 278 92 283 110 212 137 211 153 263 187 254 201 204 171 193 186 225 250 209 257 179 200 163 204 149 281 132 277 140 203 124 194 69 242 57 229 111 178 105 161 31 179 26 161 103 143 104 127 49 89 60 73 122 111Z"/>
+        <circle cx="267" cy="57" r="8"/><circle cx="251" cy="254" r="11"/><circle cx="64" cy="277" r="5"/><circle cx="24" cy="119" r="8"/><ellipse cx="92" cy="38" rx="6" ry="13" transform="rotate(-35 92 38)"/>
+      </g>
+    </svg>
+    <svg class="art" style="width:clamp(70px,10vw,145px);right:20%;top:9%;transform:rotate(-25deg)" viewBox="0 0 160 160" aria-hidden="true">
+      <g fill="#a9b988"><path d="M65 49 59 12 75 43 93 18 89 52 130 38 105 65 151 82 105 88 126 123 91 105 82 150 68 108 30 132 48 96 7 83 48 72 26 39Z"/><circle cx="134" cy="21" r="5"/><circle cx="22" cy="143" r="6"/><circle cx="145" cy="117" r="4"/></g>
+    </svg>
+    <svg class="art paint-orange" viewBox="0 0 355 430" aria-hidden="true"><defs><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".055" numOctaves="3" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="13"/></filter></defs><g fill="none" stroke="#ff6740" stroke-linecap="round" filter="url(#rough)"><path d="M14 350C82 295 203 125 286 62M28 380C98 318 213 167 306 89M20 320C87 261 194 120 265 46M54 390C144 300 248 191 314 130" stroke-width="38"/><path d="M16 300 216 53M87 400 321 157" stroke-width="9"/></g></svg>
+    <svg class="art paint-purple" viewBox="0 0 410 400" aria-hidden="true"><g fill="none" stroke="#b3a0d4" stroke-linecap="round" filter="url(#rough)"><path d="M54 268C136 267 229 217 349 97M49 305C135 305 267 223 366 122M70 335C173 325 304 234 383 156M68 236C147 223 240 156 314 75" stroke-width="34"/><path d="M61 360C172 346 321 247 390 183M43 211C121 196 229 125 286 61" stroke-width="8"/></g></svg>
+    <svg class="art scribble" viewBox="0 0 140 130" fill="none" aria-hidden="true"><path d="M25 101C5 65 59 4 99 23c39 19-4 84-42 82C19 102 60 37 102 43c38 6 8 63-25 71-35 9-18-31 13-41 20-7 34-2 36 7" stroke="#202b36" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <svg class="spark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="m20 2 1 36M3 13l34 14M5 32 34 7" stroke="#202b36" stroke-width="2"/></svg>
+    <div class="content">
+      <div class="eyebrow">Less thinking. More making.</div>
+      <h1><span class="second">Hello</span></h1>
+      <p class="intro">You don’t need a plan to make something good.<br>Just a little curiosity. And a place to start.</p>
+      <button class="cta" id="start">Go</button>
+      <div class="tiny">No rules. No perfect. Just you.</div>
+    </div>
+    <div class="note">Go on, get a little messy.<svg viewBox="0 0 80 55" fill="none" aria-hidden="true"><path d="M4 43C31 50 58 39 57 9m-9 9 9-12 8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <canvas id="paint" aria-label="Painting canvas. Use your pointer to draw after choosing Go."></canvas>
+    <div class="hint" id="hint" role="status" aria-live="polite"></div>
+  </main>
+  <footer>
+    <div class="footer-left"><div class="palette" aria-label="Paint colors"><button class="swatch selected" style="background:#ff6740" data-color="#ff6740" aria-label="Orange paint" aria-pressed="true"></button><button class="swatch" style="background:#b3a0d4" data-color="#b3a0d4" aria-label="Lavender paint" aria-pressed="false"></button><button class="swatch" style="background:#a9b988" data-color="#a9b988" aria-label="Green paint" aria-pressed="false"></button><button class="swatch" style="background:#202b36" data-color="#202b36" aria-label="Ink paint" aria-pressed="false"></button></div><span>A few colors. Endless possibilities.</span></div>
+    <span class="footer-center">An open invitation to create</span>
+    <button class="clear" id="clear">A fresh start ↻</button>
+  </footer>
+</div>
+<script>
+  const splatColors = ['#ff6740','#b3a0d4','#a9b988','#53b6cc','#f3bc42','#e87aa0'];
+  let splatColorIndex = -1;
+  document.getElementById('start').addEventListener('click', event => {
+    splatColorIndex = (splatColorIndex + 1) % splatColors.length;
+    const splat = document.createElement('div');
+    splat.className = 'click-splat';
+    splat.setAttribute('aria-hidden', 'true');
+    splat.style.color = splatColors[splatColorIndex];
+    // A rounded puddle with fluid, tapered fingers of varied lengths.
+    const polar = (angle, radius) => [150 + Math.cos(angle) * radius, 150 + Math.sin(angle) * radius];
+    const coord = point => point.map(value => value.toFixed(2)).join(',');
+    const arms = [];
+    const droplets = [];
+    const armCount = 15;
+    const phase = Math.random() * Math.PI * 2;
+    for (let i = 0; i < armCount; i++) {
+      const angle = phase + i * Math.PI * 2 / armCount + (Math.random() - .5) * .17;
+      const length = i % 3 === 0 ? 115 + Math.random() * 27 : 76 + Math.random() * 33;
+      const width = .065 + Math.random() * .075;
+      const bend = (Math.random() - .5) * .16;
+      const baseLeft = polar(angle - width * 1.9, 57);
+      const baseRight = polar(angle + width * 1.9, 57);
+      const tipLeft = polar(angle + bend - .018, length);
+      const tipRight = polar(angle + bend + .018, length);
+      arms.push(`<path d="M${coord(baseLeft)} C${coord(polar(angle - width, 76))} ${coord(polar(angle + bend - .035, length - 13))} ${coord(tipLeft)} Q${coord(polar(angle + bend, length + 5))} ${coord(tipRight)} C${coord(polar(angle + bend + .035, length - 13))} ${coord(polar(angle + width, 76))} ${coord(baseRight)}Z"/>`);
+      for (let j = 0; j < (i % 3 === 0 ? 3 : 1); j++) {
+        const dropAngle = angle + bend + (Math.random() - .5) * .18;
+        const radius = length + 9 + Math.random() * 22;
+        const [x, y] = polar(dropAngle, radius);
+        droplets.push(`<ellipse cx="${x}" cy="${y}" rx="${1 + Math.random() * 2.5}" ry="${2 + Math.random() * 3.5}" transform="rotate(${dropAngle * 180 / Math.PI - 90} ${x} ${y})" fill="currentColor"/>`);
+      }
+    }
+    const edge = Array.from({length: 24}, (_, i) => polar(i * Math.PI / 12, 60 + Math.random() * 9));
+    const mid = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    let puddle = `M${coord(mid(edge[23], edge[0]))}`;
+    edge.forEach((point, i) => { puddle += `Q${coord(point)} ${coord(mid(point, edge[(i + 1) % edge.length]))}`; });
+    splat.innerHTML = `<svg viewBox="0 0 300 300">${arms.join('')}<path d="${puddle}Z"/>${droplets.join('')}</svg>`;
+    document.body.appendChild(splat);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const rotation = Math.random() * 40 - 20;
+    const shiftX = Math.random() * 16 - 8;
+    const shiftY = Math.random() * 16 - 8;
+    const position = `translate(${shiftX}vw, ${shiftY}vh)`;
+    const effect = splat.animate([
+      { opacity: 1, transform: `${position} scale(${reducedMotion ? 1 : .05}) rotate(${rotation}deg)` },
+      { opacity: 1, transform: `${position} scale(1) rotate(${rotation}deg)`, offset: .08 },
+      { opacity: .95, transform: `${position} scale(1) rotate(${rotation}deg)`, offset: .2 },
+      { opacity: 0, transform: `${position} scale(1) rotate(${rotation}deg)` }
+    ], { duration: 4200, easing: 'ease-out', fill: 'forwards' });
+    effect.onfinish = () => splat.remove();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const button = event.currentTarget;
+    button.getAnimations().forEach(animation => animation.cancel());
+    button.animate([
+      { transform: 'translateY(0) scale(1)' },
+      { transform: 'translateY(2px) scale(.96)', offset: .2 },
+      { transform: 'translateY(-8px) scale(1.02)', offset: .5 },
+      { transform: 'translateY(0) scale(1)', offset: .8 },
+      { transform: 'translateY(-2px) scale(1)', offset: .9 },
+      { transform: 'translateY(0) scale(1)' }
+    ], { duration: 420, easing: 'ease-out' });
+  });
+  const studio=document.getElementById('studio'),canvas=document.getElementById('paint'),ctx=canvas.getContext('2d'),hint=document.getElementById('hint');
+  let color='#ff6740',drawing=false,active=false,previous=null;
+  function resize(){const saved=document.createElement('canvas');saved.width=canvas.width;saved.height=canvas.height;saved.getContext('2d').drawImage(canvas,0,0);const dpr=window.devicePixelRatio||1;canvas.width=studio.clientWidth*dpr;canvas.height=studio.clientHeight*dpr;ctx.drawImage(saved,0,0);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.lineWidth=30;ctx.lineCap='round';ctx.lineJoin='round';}
+  resize();window.addEventListener('resize',resize);
+  function activate(){active=true;studio.classList.add('painting');hint.textContent='Pick a color below. Drag anywhere to paint. Press Esc to pause.';}
+
+  document.querySelectorAll('.swatch').forEach(button=>button.addEventListener('click',()=>{color=button.dataset.color;document.querySelectorAll('.swatch').forEach(s=>{s.classList.toggle('selected',s===button);s.setAttribute('aria-pressed',s===button?'true':'false')});activate();}));
+  function point(event){const rect=canvas.getBoundingClientRect();return{x:event.clientX-rect.left,y:event.clientY-rect.top};}
+  canvas.addEventListener('pointerdown',event=>{if(!active)return;drawing=true;previous=point(event);canvas.setPointerCapture(event.pointerId);ctx.fillStyle=color;ctx.beginPath();ctx.arc(previous.x,previous.y,15,0,Math.PI*2);ctx.fill();});
+  canvas.addEventListener('pointermove',event=>{if(!drawing)return;const next=point(event);ctx.strokeStyle=color;ctx.beginPath();ctx.moveTo(previous.x,previous.y);ctx.lineTo(next.x,next.y);ctx.stroke();previous=next;});
+  function stop(){drawing=false;previous=null;}canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){stop();active=false;studio.classList.remove('painting');hint.textContent='Painting paused. Choose Go to keep going.';}});
+  document.getElementById('clear').addEventListener('click',()=>{ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore();stop();active=false;studio.classList.remove('painting');hint.textContent='A fresh canvas. All yours.';});
+</script>
+</body>
+</html>
