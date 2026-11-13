@@ -8,7 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <title>BUMBLE-CHEPESMG</title>
   <style>
-    .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{position:absolute;left:50%;top:50%;width:140vmax;height:140vmax;transform:translate(-50%,-50%)}.click-splat path,.click-splat circle{fill:currentColor}
+    .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{position:absolute;left:50%;top:50%;width:140vmax;height:140vmax;transform:translate(-50%,-50%);overflow:visible}.click-splat path,.click-splat circle{fill:currentColor}
 
     header,.eyebrow,.intro,.tiny,.note,footer,.hint{display:none!important}main{height:100svh!important;max-height:none!important}
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -20,6 +20,7 @@
     footer{height:87px;border-top:1px solid #202b362b;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;z-index:3;font-size:10px;color:#686e70}.footer-left{display:flex;gap:18px;align-items:center}.palette{display:flex;gap:7px}.swatch{width:17px;height:17px;border:2px solid var(--paper);outline:1px solid transparent;border-radius:50%;padding:0;cursor:pointer}.swatch.selected{outline-color:var(--ink)}.footer-center{letter-spacing:1.6px;text-transform:uppercase;font-size:9px}.clear{background:none;border:0;color:inherit;font-size:10px;cursor:pointer;padding:10px 0 10px 15px}.clear:hover{color:var(--ink)}canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;pointer-events:none}.painting canvas{pointer-events:auto;cursor:crosshair;touch-action:none}.painting .content{opacity:.85}.painting .cta{pointer-events:none}.hint{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);font-size:11px;white-space:nowrap;color:#59616a}
     @media(min-width:1600px){.page{padding:0 8%}}@media(max-width:700px){.page{padding:0 6%}header{height:85px}.edition{display:none}.about{font-size:11px}.brand{font-size:18px}main{min-height:650px;height:calc(100svh - 185px)}h1{font-size:clamp(76px,17vw,116px);margin-top:28px}.eyebrow{font-size:9px;letter-spacing:1.5px}.intro{font-size:14px}.paint-orange{width:220px;left:-135px;top:3%}.paint-purple{width:240px;right:-155px;bottom:4%}.scribble{width:80px;right:2%;top:7%}.spark{left:13%;top:10%;width:27px}.note{left:4%;bottom:9%;font-size:10px}.note svg{width:40px}.footer-center{display:none}footer{height:100px}.footer-left{gap:10px;font-size:9px}.content{padding-bottom:35px}}
     @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  
   </style>
 </head>
 <body>
@@ -67,7 +68,7 @@
   </footer>
 </div>
 <script>
-  const splatColors = ['#ff6740','#b3a0d4','#a9b988','#53b6cc','#f3bc42','#e87aa0'];
+  const splatColors = ['#d41435','#f28500','#ff7900','#fa8072','#eaff00','#fff44f','#ffcc00','#ebad24','#bfff00','#39ff14','#009b62','#98edc3','#00ffff','#40e0d0','#008080','#c6eafa','#87ceeb','#0088ff','#b9a0e3','#c8a2c8','#a020f0','#ff6289','#ff1493','#e000c6','#954535'];
   let splatColorIndex = -1;
   document.getElementById('start').addEventListener('click', event => {
     splatColorIndex = (splatColorIndex + 1) % splatColors.length;
@@ -84,7 +85,7 @@
     const phase = Math.random() * Math.PI * 2;
     for (let i = 0; i < armCount; i++) {
       const angle = phase + i * Math.PI * 2 / armCount + (Math.random() - .5) * .17;
-      const length = i % 3 === 0 ? 115 + Math.random() * 27 : 76 + Math.random() * 33;
+      const length = i % 3 === 0 ? 150 + Math.random() * 30 : 80 + Math.random() * 28;
       const width = .07 + Math.random() * .055;
       const bend = (Math.random() - .5) * .16;
       const baseLeft = polar(angle - width * 1.9, 57);
@@ -103,8 +104,8 @@
     document.body.appendChild(splat);
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const rotation = Math.random() * 40 - 20;
-    const shiftX = Math.random() * 8 - 4;
-    const shiftY = Math.random() * 8 - 4;
+    const shiftX = Math.random() * 40 - 20;
+    const shiftY = Math.random() * 36 - 18;
     const position = `translate(${shiftX}vw, ${shiftY}vh)`;
     const effect = splat.animate([
       { opacity: 1, transform: `${position} scale(${reducedMotion ? 1 : .05}) rotate(${rotation}deg)` },
@@ -138,6 +139,7 @@
   function stop(){drawing=false;previous=null;}canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
   document.addEventListener('keydown',event=>{if(event.key==='Escape'){stop();active=false;studio.classList.remove('painting');hint.textContent='Painting paused. Choose Go to keep going.';}});
   document.getElementById('clear').addEventListener('click',()=>{ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,canvas.width,canvas.height);ctx.restore();stop();active=false;studio.classList.remove('painting');hint.textContent='A fresh canvas. All yours.';});
+
 </script>
 </body>
 </html>
