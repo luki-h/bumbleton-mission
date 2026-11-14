@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#f4f2e9">
   <meta name="description" content="A little space to make a big mark. Pick a color and paint outside the lines.">
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
-  <title>BUMBLE-CHEPESMG</title>
+  <title>BUMBLE-KKEG9PPW</title>
   <style>
     .click-splat{position:fixed;inset:0;z-index:10;display:grid;place-items:center;pointer-events:none;overflow:hidden}.click-splat svg{position:absolute;left:50%;top:50%;width:140vmax;height:140vmax;transform:translate(-50%,-50%);overflow:visible}.click-splat path,.click-splat circle{fill:currentColor}
 
@@ -70,12 +70,27 @@
 <script>
   const splatColors = ['#d41435','#f28500','#ff7900','#fa8072','#eaff00','#fff44f','#ffcc00','#ebad24','#bfff00','#39ff14','#009b62','#98edc3','#00ffff','#40e0d0','#008080','#c6eafa','#87ceeb','#0088ff','#b9a0e3','#c8a2c8','#a020f0','#ff6289','#ff1493','#e000c6','#954535'];
   let splatColorIndex = -1;
+  let colorBag = [];
+  function nextSplatColor() {
+    if (!colorBag.length) {
+      colorBag = splatColors.map((_, index) => index);
+      for (let i = colorBag.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [colorBag[i], colorBag[j]] = [colorBag[j], colorBag[i]];
+      }
+      if (colorBag[colorBag.length - 1] === splatColorIndex) {
+        [colorBag[0], colorBag[colorBag.length - 1]] = [colorBag[colorBag.length - 1], colorBag[0]];
+      }
+    }
+    splatColorIndex = colorBag.pop();
+    return splatColors[splatColorIndex];
+  }
   document.getElementById('start').addEventListener('click', event => {
-    splatColorIndex = (splatColorIndex + 1) % splatColors.length;
+    const nextColor = nextSplatColor();
     const splat = document.createElement('div');
     splat.className = 'click-splat';
     splat.setAttribute('aria-hidden', 'true');
-    splat.style.color = splatColors[splatColorIndex];
+    splat.style.color = nextColor;
     // A rounded puddle with fluid, tapered fingers of varied lengths.
     const polar = (angle, radius) => [150 + Math.cos(angle) * radius, 150 + Math.sin(angle) * radius];
     const coord = point => point.map(value => value.toFixed(2)).join(',');
